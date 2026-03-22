@@ -1,8 +1,3 @@
-
-
-Here's a gorgeous README. Create `README.md` in your project root:
-
-```markdown
 <div align="center">
 
 # 🔥 CUDA Image Processing Pipeline
@@ -15,17 +10,13 @@ Here's a gorgeous README. Create `README.md` in your project root:
 
 <br>
 
-```
 ╔══════════════════════════════════════╗
-║  CPU:           4016.805 ms          ║
-║  GPU (compute):   30.061 ms          ║
-║  Speedup:        133.6x 🚀           ║
+║ CPU: 4016.805 ms ║
+║ GPU (compute): 30.061 ms ║
+║ Speedup: 133.6x 🚀 ║
 ╚══════════════════════════════════════╝
-```
 
 </div>
-
----
 
 ## ◈ What is this?
 
@@ -37,19 +28,17 @@ On a **23.3 megapixel** cityscape image, the GPU pipeline finishes in **30ms** w
 
 ## ◈ Pipeline
 
-```
-┌──────────┐     ┌────────────┐     ┌──────────────┐     ┌────────────────┐
-│  Input   │────▶│ Grayscale  │────▶│ Gaussian Blur│────▶│ Edge Detection │
-│  Image   │     │   47.8x ⚡  │     │  133.8x ⚡    │     │   168.4x ⚡     │
-└──────────┘     └────────────┘     └──────────────┘     └────────────────┘
-```
+┌──────────┐ ┌────────────┐ ┌──────────────┐ ┌────────────────┐
+│ Input │────▶│ Grayscale │────▶│ Gaussian Blur│────▶│ Edge Detection │
+│ Image │ │ 47.8x ⚡ │ │ 133.8x ⚡ │ │ 168.4x ⚡ │
+└──────────┘ └────────────┘ └──────────────┘ └────────────────┘
 
-| Operation | CPU | GPU | Speedup |
-|---|---|---|---|
-| Grayscale | 64.22 ms | 1.34 ms | **47.8x** |
-| Gaussian Blur (5×5) | 3420.72 ms | 25.56 ms | **133.8x** |
-| Sobel Edge Detection | 531.86 ms | 3.16 ms | **168.4x** |
-| **Total Pipeline** | **4016.81 ms** | **30.06 ms** | **133.6x** |
+| Operation            | CPU            | GPU          | Speedup    |
+| -------------------- | -------------- | ------------ | ---------- |
+| Grayscale            | 64.22 ms       | 1.34 ms      | **47.8x**  |
+| Gaussian Blur (5×5)  | 3420.72 ms     | 25.56 ms     | **133.8x** |
+| Sobel Edge Detection | 531.86 ms      | 3.16 ms      | **168.4x** |
+| **Total Pipeline**   | **4016.81 ms** | **30.06 ms** | **133.6x** |
 
 > Benchmarked on a 3939×5909 (23.3 MP) image • NVIDIA GeForce GTX 1650 (16 SMs, 3715 MB)
 
@@ -75,8 +64,6 @@ On a **23.3 megapixel** cityscape image, the GPU pipeline finishes in **30ms** w
 <td><img src="Img/cityscape_edges.jpg" width="400"/></td>
 </tr>
 </table>
-
-> ⚠️ Replace the image paths above with your actual output filenames
 
 ---
 
@@ -112,8 +99,6 @@ nvcc -O2 main.cu -o imgproc
 
 ### Sample Images
 
-4 sample images are included in `Img/` — try them all:
-
 ```bash
 # Please copy-paste the filenames from the Img folder itself since they're messy
 # Feel free to add your own, Thanks!
@@ -128,6 +113,7 @@ nvcc -O2 main.cu -o imgproc
 ## ◈ How It Works
 
 ### Grayscale Conversion
+
 Each GPU thread processes one pixel, applying the luminance formula:
 
 ```
@@ -135,6 +121,7 @@ gray = 0.299 × R + 0.587 × G + 0.114 × B
 ```
 
 ### Gaussian Blur
+
 #A 5×5 Gaussian kernel is applied using shared memory tiling for coalesced memory access:
 
 ```
@@ -146,6 +133,7 @@ gray = 0.299 × R + 0.587 × G + 0.114 × B
 ```
 
 ### Sobel Edge Detection
+
 Gradient magnitude computed from horizontal and vertical Sobel kernels:
 
 ```
@@ -202,13 +190,8 @@ CPU: Process pixels one by one          GPU: Process ALL pixels simultaneously
 
 Image processing is **embarrassingly parallel** — each pixel's computation is independent. A GTX 1650 has **896 CUDA cores** working simultaneously, while a CPU processes sequentially (or with limited threads).
 
----
-
 <div align="center">
 
-**Built with CUDA** • **[Hitotsume-Nozo](https://github.com/Hitotsume-Nozo)**
+**Built with CUDA for Everyone!** • **[Hitotsume-Nozo](https://github.com/Hitotsume-Nozo)**
 
 </div>
-
-
-
