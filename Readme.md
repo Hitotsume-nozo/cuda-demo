@@ -113,7 +113,7 @@ gray = 0.299 × R + 0.587 × G + 0.114 × B
 
 ### Gaussian Blur
 
-# An 11×11 Gaussian kernel is applied using shared memory tiling for coalesced memory access, providing a stronger smoothing effect ideal for noise reduction before edge detection.
+An 11×11 Gaussian kernel is applied using shared memory tiling for coalesced memory access, providing a stronger smoothing effect ideal for noise reduction before edge detection.
 
 ```
 1  4  7  4  1
