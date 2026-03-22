@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔥 CUDA Image Processing Pipeline
+# CUDA Image Processing Pipeline
 
 <img src="https://img.shields.io/badge/CUDA-76B900?style=for-the-badge&logo=nvidia&logoColor=white" />
 <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" />
@@ -9,12 +9,6 @@
 **Real-time image processing on the GPU — up to 168x faster than CPU**
 
 <br>
-
-╔══════════════════════════════════════╗
-║ CPU: 4016.805 ms ║
-║ GPU (compute): 30.061 ms ║
-║ Speedup: 133.6x 🚀 ║
-╚══════════════════════════════════════╝
 
 </div>
 
@@ -28,10 +22,7 @@ On a **23.3 megapixel** cityscape image, the GPU pipeline finishes in **30ms** w
 
 ## ◈ Pipeline
 
-┌──────────┐ ┌────────────┐ ┌──────────────┐ ┌────────────────┐
-│ Input │────▶│ Grayscale │────▶│ Gaussian Blur│────▶│ Edge Detection │
-│ Image │ │ 47.8x ⚡ │ │ 133.8x ⚡ │ │ 168.4x ⚡ │
-└──────────┘ └────────────┘ └──────────────┘ └────────────────┘
+`Input Image` **→** `Grayscale (47.8x )` **→** `Gaussian Blur (133.8x )` **→** `Edge Detection (168.4x )`
 
 | Operation            | CPU            | GPU          | Speedup    |
 | -------------------- | -------------- | ------------ | ---------- |
@@ -122,7 +113,7 @@ gray = 0.299 × R + 0.587 × G + 0.114 × B
 
 ### Gaussian Blur
 
-#A 5×5 Gaussian kernel is applied using shared memory tiling for coalesced memory access:
+# An 11×11 Gaussian kernel is applied using shared memory tiling for coalesced memory access, providing a stronger smoothing effect ideal for noise reduction before edge detection.
 
 ```
 1  4  7  4  1
