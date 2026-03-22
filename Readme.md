@@ -52,16 +52,16 @@ On a **23.3 megapixel** cityscape image, the GPU pipeline finishes in **30ms** w
 <td align="center"><b>Grayscale</b></td>
 </tr>
 <tr>
-<td><img src="Img/cityscape.jpg" width="400"/></td>
-<td><img src="Img/cityscape_gray.jpg" width="400"/></td>
+<td><img src="./images/01_original.png" width="400"/></td>
+<td><img src="./images/02_grayscale.png" width="400"/></td>
 </tr>
 <tr>
 <td align="center"><b>Gaussian Blur</b></td>
 <td align="center"><b>Edge Detection</b></td>
 </tr>
 <tr>
-<td><img src="Img/cityscape_blur.jpg" width="400"/></td>
-<td><img src="Img/cityscape_edges.jpg" width="400"/></td>
+<td><img src="./images/03_blur.png" width="400"/></td>
+<td><img src="./images/04_edges.png" width="400"/></td>
 </tr>
 </table>
 
